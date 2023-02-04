@@ -10,7 +10,6 @@ public class MainActivity extends AppCompatActivity {
 
     private MediaPlayer medidiaplayer;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
         medidiaplayer = MediaPlayer.create(getApplicationContext(),
                 R.raw.mariamarcal_tempodecantar);
 
-
     }
 
     public void executorSom(View view) {
@@ -27,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         if (medidiaplayer != null) {
             medidiaplayer.start();
         }
-
 
     }
 
@@ -44,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
             medidiaplayer.stop();
             medidiaplayer = MediaPlayer.create(getApplicationContext(),
                     R.raw.mariamarcal_tempodecantar);
-
 
         }
     }
