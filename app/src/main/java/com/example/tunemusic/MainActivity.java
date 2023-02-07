@@ -11,8 +11,7 @@ import android.widget.SeekBar;
 
 public class MainActivity extends AppCompatActivity {
 
-    private MediaPlayer medidiaplayer;
-    private SeekBar seekVolume;
+    private MediaPlayer  medidiaplayer;
     private AudioManager audioManager;
 
     @Override
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void inicializarSeekBar(){
 
-        seekVolume = findViewById(R.id.seekVolume);
+        SeekBar seekVolume = findViewById(R.id.seekVolume);
 
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
@@ -85,6 +84,25 @@ public class MainActivity extends AppCompatActivity {
             medidiaplayer = MediaPlayer.create(getApplicationContext(),
                     R.raw.mariamarcal_tempodecantar);
 
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if ( medidiaplayer.isPlaying()){
+             medidiaplayer.pause();
+        }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (medidiaplayer != null && medidiaplayer.isPlaying()){
+            medidiaplayer.stop();
+            medidiaplayer.release();
+            medidiaplayer = null;
         }
     }
 }
